@@ -48,7 +48,7 @@ export default function ProductPage({ params }: { params: { id: string } }) {
         <div>
           <span className="text-sm font-medium text-primary">{product.category}</span>
           <h1 className="text-4xl md:text-5xl font-bold font-headline mt-2">{product.name}</h1>
-          <p className="text-3xl font-bold text-primary mt-4">${product.price.toFixed(2)}</p>
+          <p className="text-3xl font-bold text-primary mt-4">₹{product.price.toFixed(2)}</p>
           <p className="mt-6 text-muted-foreground">{product.description}</p>
           
           <div className="mt-8 flex items-center gap-4">

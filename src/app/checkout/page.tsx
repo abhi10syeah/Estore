@@ -26,7 +26,7 @@ const checkoutSchema = z.object({
   email: z.string().email("Invalid email address."),
   address: z.string().min(5, "Address must be at least 5 characters."),
   city: z.string().min(2, "City must be at least 2 characters."),
-  zip: z.string().regex(/^\d{5}(-\d{4})?$/, "Invalid ZIP code."),
+  zip: z.string().regex(/^\d{6}$/, "Invalid ZIP code."),
 })
 
 export default function CheckoutPage() {
@@ -140,7 +140,7 @@ export default function CheckoutPage() {
                                     <FormItem>
                                     <FormLabel>ZIP Code</FormLabel>
                                     <FormControl>
-                                        <Input placeholder="12345" {...field} />
+                                        <Input placeholder="110001" {...field} />
                                     </FormControl>
                                     <FormMessage />
                                     </FormItem>
@@ -169,13 +169,13 @@ export default function CheckoutPage() {
                                     <p className="text-muted-foreground">Qty: {item.quantity}</p>
                                 </div>
                             </div>
-                            <p className="font-medium">${(item.product.price * item.quantity).toFixed(2)}</p>
+                            <p className="font-medium">₹{(item.product.price * item.quantity).toFixed(2)}</p>
                         </div>
                     ))}
                     <Separator />
                      <div className="flex justify-between text-sm">
                         <span className="text-muted-foreground">Subtotal</span>
-                        <span>${totalPrice.toFixed(2)}</span>
+                        <span>₹{totalPrice.toFixed(2)}</span>
                     </div>
                     <div className="flex justify-between text-sm">
                         <span className="text-muted-foreground">Shipping</span>
@@ -184,7 +184,7 @@ export default function CheckoutPage() {
                     <Separator />
                     <div className="flex justify-between font-bold text-lg">
                         <span>Total</span>
-                        <span>${totalPrice.toFixed(2)}</span>
+                        <span>₹{totalPrice.toFixed(2)}</span>
                     </div>
                 </CardContent>
                  <CardFooter>
